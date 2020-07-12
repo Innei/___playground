@@ -1,4 +1,19 @@
 @base=http://127.0.0.1:8080
 
 ### todo get
-GET {{base}}/todo
+GET {{base}}/todo?page=0
+
+### todo get by id
+GET {{base}}/todo/1
+
+### todo post
+POST {{base}}/todo
+Content-Type: application/json
+
+{
+  "title": "test-2",
+  "content": "todo"
+}
+
+### todo delete 
+DELETE  {{base}}/todo/1

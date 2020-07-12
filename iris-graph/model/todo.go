@@ -1,7 +1,7 @@
 /*
  * @Author: Innei
  * @Date: 2020-07-11 14:57:04
- * @LastEditTime: 2020-07-11 17:12:18
+ * @LastEditTime: 2020-07-12 19:50:19
  * @LastEditors: Innei
  * @FilePath: /iris-graph/model/todo.go
  * @Coding with Love
@@ -14,9 +14,9 @@ import (
 )
 
 type Todo struct {
-	Id      primitive.ObjectID `bson:"_id"`
-	Title   string             `bson:title`
-	Content string             `bson:content`
+	Id      primitive.ObjectID `bson:"_id" json:"_id"`
+	Title   string             `bson:"title" json:"title"`
+	Content string             `bson:"content" json:"content"`
 }
 
 func (T *Todo) Generate() Todo {

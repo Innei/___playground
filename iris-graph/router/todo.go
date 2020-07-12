@@ -1,7 +1,7 @@
 /*
  * @Author: Innei
  * @Date: 2020-07-11 15:02:17
- * @LastEditTime: 2020-07-11 16:56:27
+ * @LastEditTime: 2020-07-12 21:18:52
  * @LastEditors: Innei
  * @FilePath: /iris-graph/router/todo.go
  * @Coding with Love
@@ -16,6 +16,10 @@ import (
 
 func TodoRoutes(p iris.Party) {
 
-	p.Get("/", todo.Add)
+	p.Get("/", todo.All)
 	p.Get("/top", todo.Top)
+	p.Get("/:id", todo.FindById)
+	p.Post("/", todo.Create)
+	p.Delete("/:id", todo.DeleteById)
+
 }
