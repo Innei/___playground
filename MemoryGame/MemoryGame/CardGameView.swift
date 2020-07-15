@@ -23,7 +23,9 @@ struct CardView: View {
                 RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: 3)
                 Text(self.card.content)
             } else {
-                RoundedRectangle(cornerRadius: cornerRadius).fill()
+                if !card.isMatched {
+                    RoundedRectangle(cornerRadius: cornerRadius).fill()
+                }
             }
         }
         .foregroundColor(Color.orange)
@@ -41,10 +43,11 @@ struct CardView: View {
 }
 
 struct CardGameView: View {
-    @ObservedObject var vm: EmojiMemoryGame = EmojiMemoryGame(content: ["🌼", "🌻", "S", "A"])
+    @ObservedObject var vm: EmojiMemoryGame = EmojiMemoryGame(content: ["🌼", "🌻", "🥧", "🌚", "🍦"])
     var body: some View {
         HStack {
             Grid(items: vm.cards) { card in
+
                 CardView(card: card).onTapGesture {
                     self.vm.choice(card: card)
                 }.padding(3)

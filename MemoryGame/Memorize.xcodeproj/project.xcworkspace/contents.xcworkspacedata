@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:MemoryGame.xcodeproj">
+      location = "self:/Users/innei/GitHub/playground/MemoryGame/Memorize.xcodeproj">
    </FileRef>
 </Workspace>
