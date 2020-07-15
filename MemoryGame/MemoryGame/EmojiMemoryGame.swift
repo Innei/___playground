@@ -6,10 +6,10 @@
 //  Copyright © 2020 mx-space. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
-class EmojiMemoryGame {
-    private(set) var model: MemoryGameModel<String>
+class EmojiMemoryGame: ObservableObject {
+    @Published private(set) var model: MemoryGameModel<String>
 
     init() {
         model = EmojiMemoryGame.createGame(contents: ["🌝", "🌚", "🌎"])
@@ -25,8 +25,8 @@ class EmojiMemoryGame {
         }
     }
 
-    func choise() {
-        model.choise()
+    func choice(card: MemoryGameModel<String>.Card) {
+        model.choice(card: card)
     }
 
     var cards: [MemoryGameModel<String>.Card] {
