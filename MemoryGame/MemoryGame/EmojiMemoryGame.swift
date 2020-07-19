@@ -10,12 +10,14 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
     @Published private(set) var model: MemoryGameModel<String>
+    var customContent: [String]?
 
     init() {
         model = EmojiMemoryGame.createGame(contents: ["🌝", "🌚", "🌎"])
     }
 
     init(content: [String]) {
+        customContent = content
         model = EmojiMemoryGame.createGame(contents: content)
     }
 
@@ -31,5 +33,9 @@ class EmojiMemoryGame: ObservableObject {
 
     var cards: [MemoryGameModel<String>.Card] {
         model.cards
+    }
+
+    func resetGame() {
+        model = EmojiMemoryGame.createGame(contents: customContent ?? ["🌝", "🌚", "🌎"])
     }
 }

@@ -17,47 +17,58 @@ struct CardView: View {
         }
     }
 
+    @ViewBuilder
     func body(proxy: GeometryProxy) -> some View {
-        ZStack {
-            if self.card.isFaceUp {
-                RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: 3)
-                Text(self.card.content)
-            } else {
-                if !card.isMatched {
-                    RoundedRectangle(cornerRadius: cornerRadius).fill()
-                }
-            }
-        }
-        .foregroundColor(Color.orange)
-        .font(Font.system(size: getFontSize(size: proxy.size)))
+        if card.isFaceUp || !card.isMatched {
+            ZStack {
+                Pie(startAngle: .degrees(-90), endAngle: .degrees(110 - 90)).opacity(0.4)
+                    .padding(6)
 
-        .cornerRadius(cornerRadius)
+                Text(self.card.content)
+                    .font(Font.system(size: getFontSize(size: proxy.size)))
+                    .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
+                    .animation(card.isMatched ? Animation.linear(duration: 1).repeatForever(autoreverses: false) : .default)
+            }
+            .cardify(isFaceUp: card.isFaceUp)
+            .transition(.scale)
+            .rotation3DEffect(Angle.degrees(card.isFaceUp ? 0 : 180), axis: (0, 1, 0))
+        }
     }
 
-    // MARK: - constant
-
-    let cornerRadius: CGFloat = 15
-    func getFontSize(size: CGSize) -> CGFloat {
-        min(size.height, size.width) * 0.75
+    private func getFontSize(size: CGSize) -> CGFloat {
+        min(size.height, size.width) * 0.65
     }
 }
 
 struct CardGameView: View {
     @ObservedObject var vm: EmojiMemoryGame = EmojiMemoryGame(content: ["🌼", "🌻", "🥧", "🌚", "🍦"])
     var body: some View {
-        HStack {
-            Grid(items: vm.cards) { card in
+        ZStack {
+            Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all)
+            VStack {
+                HStack {
+                    Grid(items: vm.cards) { card in
 
-                CardView(card: card).onTapGesture {
-                    self.vm.choice(card: card)
-                }.padding(3)
+                        CardView(card: card).onTapGesture {
+                            self.vm.choice(card: card)
+                        }.padding(3)
+                    }
+                }.padding()
+
+                Button(action: {
+                    self.vm.resetGame()
+                }, label: {
+                    Text("Reset").foregroundColor(.red)
+                })
             }
-        }.padding()
+        }
     }
 }
 
 class ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CardGameView()
+        let game = EmojiMemoryGame()
+        game.choice(card: game.cards[0])
+        return CardGameView(vm: game)
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 struct MemoryGameModel<CardContent> where CardContent: Equatable {
-    var cards: [Card] = []
+    private(set) var cards: [Card] = []
 
     struct Card: Identifiable {
         var isFaceUp = false
@@ -23,6 +23,7 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable {
             cards.append(Card(content: contentFactory(index), id: index * 2))
             cards.append(Card(content: contentFactory(index), id: index * 2 + 1))
         }
+        cards.shuffle()
     }
 
     var indexOfTheOneAndOnlyFaceUpCard: Int? {

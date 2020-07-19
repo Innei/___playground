@@ -10,6 +10,9 @@
 		1F75279724BF1B2B004055B7 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75279624BF1B2B004055B7 /* Grid.swift */; };
 		1F75279924BF20B8004055B7 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75279824BF20B8004055B7 /* GridLayout.swift */; };
 		1F75279B24BF262F004055B7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75279A24BF262F004055B7 /* ArrayExtension.swift */; };
+		1F75279D24C0937A004055B7 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F75279C24C0937A004055B7 /* Pie.swift */; };
+		1FA9996424C3183400D67533 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9996324C3183400D67533 /* Cardify.swift */; };
+		1FA9996624C478BD00D67533 /* TestUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9996524C478BD00D67533 /* TestUI.swift */; };
 		1FC13E9724BD780D0036DD4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC13E9624BD780D0036DD4D /* AppDelegate.swift */; };
 		1FC13E9924BD780D0036DD4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC13E9824BD780D0036DD4D /* SceneDelegate.swift */; };
 		1FC13E9B24BD780D0036DD4D /* CardGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC13E9A24BD780D0036DD4D /* CardGameView.swift */; };
@@ -24,6 +27,9 @@
 		1F75279624BF1B2B004055B7 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		1F75279824BF20B8004055B7 /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		1F75279A24BF262F004055B7 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		1F75279C24C0937A004055B7 /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
+		1FA9996324C3183400D67533 /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
+		1FA9996524C478BD00D67533 /* TestUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUI.swift; sourceTree = "<group>"; };
 		1FC13E9324BD780D0036DD4D /* Memorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FC13E9624BD780D0036DD4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FC13E9824BD780D0036DD4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +78,9 @@
 				1F75279624BF1B2B004055B7 /* Grid.swift */,
 				1F75279A24BF262F004055B7 /* ArrayExtension.swift */,
 				1FC13E9A24BD780D0036DD4D /* CardGameView.swift */,
+				1FA9996524C478BD00D67533 /* TestUI.swift */,
+				1FA9996324C3183400D67533 /* Cardify.swift */,
+				1F75279C24C0937A004055B7 /* Pie.swift */,
 				1FC13EAB24BD78590036DD4D /* EmojiMemoryGame.swift */,
 				1FC13EAA24BD78590036DD4D /* MemoryGameModel.swift */,
 				1FC13E9C24BD780E0036DD4D /* Assets.xcassets */,
@@ -164,10 +173,13 @@
 				1FC13E9724BD780D0036DD4D /* AppDelegate.swift in Sources */,
 				1FC13E9924BD780D0036DD4D /* SceneDelegate.swift in Sources */,
 				1FC13EAC24BD785A0036DD4D /* MemoryGameModel.swift in Sources */,
+				1FA9996624C478BD00D67533 /* TestUI.swift in Sources */,
+				1F75279D24C0937A004055B7 /* Pie.swift in Sources */,
 				1F75279B24BF262F004055B7 /* ArrayExtension.swift in Sources */,
 				1FC13E9B24BD780D0036DD4D /* CardGameView.swift in Sources */,
 				1FC13EAD24BD785A0036DD4D /* EmojiMemoryGame.swift in Sources */,
 				1F75279924BF20B8004055B7 /* GridLayout.swift in Sources */,
+				1FA9996424C3183400D67533 /* Cardify.swift in Sources */,
 				1F75279724BF1B2B004055B7 /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
