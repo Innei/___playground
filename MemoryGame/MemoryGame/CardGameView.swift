@@ -30,8 +30,8 @@ struct CardView: View {
                     .animation(card.isMatched ? Animation.linear(duration: 1).repeatForever(autoreverses: false) : .default)
             }
             .cardify(isFaceUp: card.isFaceUp)
-            .transition(.scale)
-            .rotation3DEffect(Angle.degrees(card.isFaceUp ? 0 : 180), axis: (0, 1, 0))
+
+            .transition(AnyTransition.scale)
         }
     }
 
@@ -50,8 +50,12 @@ struct CardGameView: View {
                     Grid(items: vm.cards) { card in
 
                         CardView(card: card).onTapGesture {
-                            self.vm.choice(card: card)
-                        }.padding(3)
+                            withAnimation(.linear(duration: 0.75)) {
+                                self.vm.choice(card: card)
+                            }
+                        }
+                        .foregroundColor(Color.orange)
+                        .padding(3)
                     }
                 }.padding()
 

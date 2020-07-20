@@ -12,16 +12,17 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable {
     private(set) var cards: [Card] = []
 
     struct Card: Identifiable {
+        var id: UUID
+
         var isFaceUp = false
         var isMatched = false
         var content: CardContent
-        var id: Int
     }
 
     init(numberOfParis: Int, contentFactory: (Int) -> CardContent) {
         for index in 0 ..< numberOfParis {
-            cards.append(Card(content: contentFactory(index), id: index * 2))
-            cards.append(Card(content: contentFactory(index), id: index * 2 + 1))
+            cards.append(Card(id: UUID(), content: contentFactory(index)))
+            cards.append(Card(id: UUID(), content: contentFactory(index)))
         }
         cards.shuffle()
     }
