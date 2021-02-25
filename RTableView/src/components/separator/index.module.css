@@ -1,0 +1,8 @@
+.separator {
+  border: 0;
+  width: 100%;
+  background: #bbb;
+  height: 1px;
+  transform: scaleY(0.3);
+  flex-shrink: 0;
+}
