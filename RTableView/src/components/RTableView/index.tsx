@@ -18,11 +18,17 @@ import { Index, ScrollParams, WindowScroller } from 'react-virtualized'
 // @ts-ignore
 import Pullable from 'react-pullable'
 import observable from '../../utils/observable'
-import { RTableViewProps } from './types'
+import { CellContentDataType, RTableViewProps } from './types'
 import { RTableCell } from './cell'
 
-export const Context = React.createContext<{ cache: CellMeasurerCache }>({
+export const Context = React.createContext<{
+  cache: CellMeasurerCache
+  onRightAction: (item: CellContentDataType) => void
+  onLeftAction: (item: CellContentDataType) => void
+}>({
   cache: null!,
+  onLeftAction: () => {},
+  onRightAction: () => {},
 })
 
 function getIndex(node: HTMLElement | null | undefined): string | void {
@@ -64,7 +70,17 @@ export const RTableView = React.forwardRef<List, RTableViewProps>(
     // }, [])
 
     return (
-      <Context.Provider value={{ cache: cache }}>
+      <Context.Provider
+        value={{
+          cache: cache,
+          onLeftAction(item) {
+            props.onLeftAction?.(item)
+          },
+          onRightAction(item) {
+            props.onRightAction?.(item)
+          },
+        }}
+      >
         <AutoSizer>
           {({ height, width }) => (
             <InfiniteLoader

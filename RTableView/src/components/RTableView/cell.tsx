@@ -16,9 +16,76 @@ export enum CellAccessoryType {
 }
 export class RTableCell extends React.PureComponent<
   ListRowProps & RTableCellProps,
-  {}
+  { touchCenterPer: number; isTouchIn: boolean }
 > {
   public static CellAccessoryType = CellAccessoryType
+  cellRef = React.createRef<HTMLDivElement>()
+
+  startPos = 0
+
+  state = {
+    touchCenterPer: 0,
+    isTouchIn: false,
+  }
+
+  handleTouch = (e: TouchEvent) => {
+    // console.log(e)
+    this.startPos = e.targetTouches.item(0)?.pageX || 0
+
+    this.setState({
+      isTouchIn: true,
+    })
+  }
+  handleMove = (e: TouchEvent) => {
+    if (!this.state.isTouchIn) return
+    const $cell = this.cellRef.current
+    if (!$cell) {
+      return
+    }
+    const width = $cell.offsetWidth
+
+    const cur = e.targetTouches.item(0)?.pageX || 0
+
+    const touchCenterPer = ((cur - width / 2) / width) * 2
+    this.setState({
+      touchCenterPer,
+    })
+  }
+
+  handleTouchEnd = (e: TouchEvent) => {
+    this.startPos = 0
+    let touchCenterPer = this.state.touchCenterPer
+    if (Math.abs(this.state.touchCenterPer) < 0.38) {
+      touchCenterPer = 0
+    } else touchCenterPer = this.state.touchCenterPer < 0 ? -1 : 1
+    this.setState({
+      isTouchIn: false,
+      touchCenterPer: touchCenterPer,
+    })
+  }
+
+  componentDidMount() {
+    const $cell = this.cellRef.current
+    if (!$cell) {
+      return
+    }
+
+    $cell.addEventListener('touchstart', this.handleTouch)
+    $cell.addEventListener('touchmove', this.handleMove)
+    $cell.addEventListener('touchend', this.handleTouchEnd)
+  }
+
+  componentWillUnmount() {
+    const $cell = this.cellRef.current
+    if (!$cell) {
+      return
+    }
+
+    $cell.removeEventListener('touchstart', this.handleTouch)
+    $cell.removeEventListener('touchmove', this.handleMove)
+    $cell.removeEventListener('touchend', this.handleTouchEnd)
+  }
+
   render() {
     const {
       columnIndex,
@@ -41,7 +108,7 @@ export class RTableCell extends React.PureComponent<
 
     return (
       <Context.Consumer>
-        {({ cache }) => {
+        {({ cache, onLeftAction, onRightAction }) => {
           return (
             <CellMeasurer
               cache={cache}
@@ -52,6 +119,7 @@ export class RTableCell extends React.PureComponent<
             >
               {({ measure, registerChild }) => (
                 <div
+                  ref={this.cellRef}
                   className={styles['cell-root']}
                   style={
                     cellRenderAnimation
@@ -68,12 +136,39 @@ export class RTableCell extends React.PureComponent<
                       : style
                   }
                 >
+                  <div className={styles['back-overlay']}>
+                    <div
+                      className={styles['info-btn']}
+                      onClick={() => {
+                        onLeftAction(item)
+                        this.setState({
+                          touchCenterPer: 0,
+                        })
+                      }}
+                    >
+                      Info
+                    </div>
+                    <div
+                      className={styles['delete-btn']}
+                      onClick={() => {
+                        onRightAction(item)
+                        this.setState({
+                          touchCenterPer: 0,
+                        })
+                      }}
+                    >
+                      Delete
+                    </div>
+                  </div>
                   <div
-                    style={
-                      {
-                        // transform: `translate3d(0px,${style.top}px, 0px)`,
-                      }
-                    }
+                    style={{
+                      transform: `translate3d(${
+                        this.state.touchCenterPer * 70
+                      }px,0px, 0px)`,
+                      transition: this.state.isTouchIn
+                        ? undefined
+                        : `transform .2s`,
+                    }}
                     data-index={index}
                     // @ts-ignore
                     ref={registerChild}

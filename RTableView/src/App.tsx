@@ -50,6 +50,14 @@ function App() {
         }}
       >
         <RTableView
+          onRightAction={(item) => {
+            alert('Deleted ' + item.textLabel?.text)
+          }}
+          onLeftAction={(item) => {
+            alert(
+              'Info ' + item.textLabel?.text + '\n' + item.detailLabel?.text,
+            )
+          }}
           onPullToRefresh={() => {
             alert('Do refresh')
           }}

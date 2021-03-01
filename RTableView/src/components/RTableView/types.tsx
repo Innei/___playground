@@ -6,6 +6,8 @@ export interface RTableViewProps {
   onLoadMore?: () => Promise<any>
   didSelectRowAt?: (index: number) => any
   onPullToRefresh?: () => void
+  onLeftAction?: (index: CellContentDataType) => void
+  onRightAction?: (index: CellContentDataType) => void
 }
 
 export type RLabel = {

@@ -12,6 +12,7 @@
   position: relative;
   padding-left: 1em;
   transition: background-color 0.2s;
+  background: #fff;
 }
 
 .cell-root {
@@ -84,4 +85,36 @@
 
 .puller {
   z-index: 99999999;
+}
+
+.back-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.back-overlay .delete-btn,
+.back-overlay .info-btn {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+
+  color: #fff;
+}
+.back-overlay .delete-btn {
+  background: #d65745;
+  right: 0;
+  padding: 0.5em;
+}
+
+.back-overlay .info-btn {
+  background: #2980b9;
+  left: 0;
+  padding: 0.9em;
 }
