@@ -50,13 +50,13 @@
 
 .cell .view.has-access {
   display: grid;
-  grid-template-columns: auto 4em;
+  grid-template-columns: auto 2em;
 }
 
 .cell .view.has-access .access {
   display: flex;
   align-items: center;
-  flex-basis: 2em;
+  flex-basis: 1em;
   flex-shrink: 0;
 }
 

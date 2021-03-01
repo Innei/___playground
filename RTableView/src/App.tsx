@@ -1,7 +1,7 @@
 /*
  * @Author: Innei
  * @Date: 2021-02-25 12:26:13
- * @LastEditTime: 2021-02-25 15:02:52
+ * @LastEditTime: 2021-03-01 20:34:26
  * @LastEditors: Innei
  * @FilePath: /RTableView/src/App.tsx
  * @Mark: Coding with Love
@@ -15,6 +15,7 @@ import {
   RTableView,
 } from './components/RTableView'
 import { List } from 'react-virtualized'
+import { Separator } from './components/separator'
 
 const mock = [
   {
@@ -39,14 +40,15 @@ function App() {
   const [row, setRow] = React.useState('0')
   const [cellRenderAnimation, setCellRenderAnimation] = React.useState(true)
   return (
-    <div className="">
-      <p style={{ textAlign: 'center' }}>UIKIt UITableView implementation</p>
+    <div style={{ maxWidth: '600px', margin: 'auto' }}>
+      <header className="navigation-item">
+        <nav>UIKIt UITableView implementation</nav>
+        <Separator />
+      </header>
       <div
         style={{
-          maxWidth: '600px',
-          margin: 'auto',
-          padding: '2rem 0',
-          height: '80vh',
+          padding: '0 0 1em 0',
+          height: '70vh',
         }}
       >
         <RTableView
@@ -67,15 +69,14 @@ function App() {
           }}
         />
       </div>
-      <div style={{ padding: '2em 1em' }}>
+      <div className="actions">
         <p>
           Current Row Count: {data.length}, Cell Animation:{' '}
           {cellRenderAnimation ? 'On' : 'Off'}
         </p>
 
-        <p style={{ display: 'flex' }}>
+        <p>
           <button
-            style={{ fontSize: '1em', margin: '0 12px' }}
             onClick={() => {
               const tmp: any[] = []
               for (let i = 0; i < Math.floor(100000 / _data.length); i++) {
@@ -89,7 +90,6 @@ function App() {
           </button>
 
           <button
-            style={{ fontSize: '1em', margin: '0 12px' }}
             onClick={() => {
               setData(data.slice(0, 100))
             }}
@@ -98,7 +98,6 @@ function App() {
           </button>
 
           <button
-            style={{ fontSize: '1em', margin: '0 12px' }}
             onClick={() => {
               setCellRenderAnimation(!cellRenderAnimation)
             }}
