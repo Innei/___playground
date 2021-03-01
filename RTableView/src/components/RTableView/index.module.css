@@ -41,10 +41,10 @@
 }
 
 .disclosure-indicator {
-  height: 0.4em;
-  width: 0.4em;
-  border-right: 1px solid #c5c5c7;
-  border-bottom: 1px solid #c5c5c7;
+  height: 0.5em;
+  width: 0.5em;
+  border-right: 2px solid #c5c5c7;
+  border-bottom: 2px solid #c5c5c7;
   transform: rotate(-45deg);
 }
 
@@ -70,7 +70,7 @@
 }
 .cell .view .content-view .detail {
   font-size: 0.8em;
-  color: #bbb;
+  color: #333;
 }
 
 @keyframes fade {

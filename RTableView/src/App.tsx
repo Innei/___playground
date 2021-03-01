@@ -1,7 +1,7 @@
 /*
  * @Author: Innei
  * @Date: 2021-02-25 12:26:13
- * @LastEditTime: 2021-03-01 20:34:26
+ * @LastEditTime: 2021-03-01 20:41:29
  * @LastEditors: Innei
  * @FilePath: /RTableView/src/App.tsx
  * @Mark: Coding with Love
@@ -9,11 +9,9 @@
 import * as React from 'react'
 import logo from './logo.svg'
 import './App.css'
-import {
-  CellContentDataType,
-  RTableCell,
-  RTableView,
-} from './components/RTableView'
+import { RTableView } from './components/RTableView'
+import { RTableCell } from './components/RTableView/cell'
+import { CellContentDataType } from './components/RTableView/types'
 import { List } from 'react-virtualized'
 import { Separator } from './components/separator'
 
